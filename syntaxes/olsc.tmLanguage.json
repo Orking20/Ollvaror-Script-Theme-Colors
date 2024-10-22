@@ -1,0 +1,118 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "olsc",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#actors"
+		},
+		{
+			"include": "#events"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#reserved-words"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#coments"
+		},
+		{
+			"include": "#identifiers"
+		},
+		{
+			"include": "#numbers"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.conditional.olsc",
+				"match": "\\b(messagecontains|messageexact|conditionalequal|conditionaldifferent|conditionalplayer|conditionalfaction|conditionaltagequals|conditionalcounterequal|conditionalcounterdifferent|conditionalcountermorethan|conditionalcounterlessthan|conditionalactorequal|conditionalactordifferent|conditionalglobalchangeto|conditionalsometagalive|conditionalalltagalive|conditionalsometagdead|conditionalalltagdead|conditionalaccomplished|conditionalif|conditionalglobalactorequal|conditionalglobalactordifferent|conditionalglobalequal|conditionalglobaldifferent|conditionalcheckattribute|conditionalswitchon|conditionalswitchoff|conditionalrandom|conditionalnextobjectvalid|playeroptionequal|while|end)\\b"
+			}]
+		},
+		"actors": {
+			"patterns": [{
+				"name": "entity.name.actor.olsc",
+				"match": "\\b(actor)(?=\\s*:)"
+			}]
+		},
+		"events":{
+			"patterns": [{
+				"name": "entity.name.event.olsc",
+				"match": "\\b(event)(?=\\s*:)"
+			}]
+		},
+		"variables":{
+			"patterns": [{
+				"name": "variable.hash.olsc",
+				"match": "#[a-zA-Z_][a-zA-Z0-9_]*"
+			},
+			{
+				"name": "variable.actor.other.olsc",
+				"match": "(?<=(?:actor|event):\\s*)[a-zA-Z0-9]+(?=\\s*;)"
+			},
+			{
+				"name": "variable.declaration.olsc",
+				"match": "\\b(setcounter|increasecounter|decreasecounter|actorglobalsetcounter|counter|assign|actorassign|actorassignglobal|assignglobal)\\b"
+			}]
+		},
+		"functions":{
+			"patterns": [{
+				"name": "entity.name.function.olsc",
+				"match": "\\b(function|endfunction)\\b|(?<=function:)[a-zA-Z_][a-zA-Z0-9_]*(?=\\(\\))"
+			},
+			{
+				"name": "entity.name.call.olsc",
+				"match": "[a-zA-Z][a-zA-Z0-9_]*(?=\\s*\\(\\))"
+			}]
+		},
+		"reserved-words": {
+			"patterns": [{
+				"name": "entity.name.function.member.olsc",
+				"match": "\\b(sendtexture|addbackground|SetSight|loadrelic|accomplish|accomplishsingle|pause|message|bigmessage|bigmessageto|talkoptions|showimage|showimageto|visual|changeimage|setalpha|setlight|playcustomsound|console|addtrap|starttrap|stoptrap|move|setswitchoption|setreturn|actormove|caoscontagion|assignpenalty|assignbonus|assignlimit|removelimits|removeeffects|createarea|summon|actortalk|heal|clean|cleanneversurrender|teleport|setexit|equip|music|musicmode|delay|enddelay|proyectile|createfurniture|animate|useswitch|userelic|setbehaviour|addcustomitem|turnto|createlightzone|makesourcecurrentvictim|makeindirectcurrentvictim|liberatevictim|listactorsatdistance|listactorsinarea|listactorstag|listfurnituretag|listswitchestag|listcustom|addtolistcustom|removefromlistcustom|conditionalnextobjectvalid|createswitch|encounter|superencounter|eliminateactor|disableencounter|summonrelative|alert|makeactorpeaceful|makeattack|makemegacreature|respite|cleantemporal|playeroptions|musicloadpart|sendtextsecuence|copylist|movelist|eraselist|claimotherserverplayerglobal|servermessage|setserveracces|sendplayer|additem|setitemquality|setzoom|removecustomitem|splittext|randomencounterposition|setplayertilevisibility|setattribute|webmessage|call)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.olsc",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.olsc",
+				"match": "\\\\."
+			}]
+		},
+		"coments": {
+			"patterns": [{
+				"name": "comment.line.double-slash.olsc",
+				"begin": "//",
+				"0": {
+              		"name": "punctuation.definition.comment.olsc"
+            	},
+				"end": "$"
+			}]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.olsc",
+				"match": "(?<=^|\\s|,|;)-?\\d+(\\.\\d+)?(?=$|\\s|,|;)"
+			}]
+		},
+		"identifiers": {
+			"patterns": [{
+				"name": "variable.other.olsc",
+				"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+			}]
+		}
+	},
+	"scopeName": "source.olsc"
+}

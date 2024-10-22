@@ -1,0 +1,32 @@
+{
+  "name": "olscript-colors",
+  "displayName": "olscript_colors",
+  "description": "This extension adds colors tto identify keywords of the olvarorscript language",
+  "version": "1.0.0",
+  "publisher": "Orking",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "olsc",
+      "aliases": ["olsc", "olsc"],
+      "extensions": [".olsc"],
+      "configuration": "./language-configuration.json"
+    }],
+    "themes": [{
+        "label": "olsc-color-theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/olsc-color-theme.json"
+      }],
+    "grammars": [{
+      "language": "olsc",
+      "scopeName": "source.olsc",
+      "path": "./syntaxes/olsc.tmLanguage.json"
+    }]
+  },
+  "license": "LICENSE.txt"
+}
